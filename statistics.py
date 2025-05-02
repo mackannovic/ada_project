@@ -1,4 +1,6 @@
 from neo4j import GraphDatabase
+import pandas as pd
+import plotly.express as px
 
 # Establish NEO4J Connection
 print("Connecting to Neo4j database...")
@@ -60,3 +62,42 @@ print("Lines by Distance")
 for record in line_distance.records:
     print(f"Line: {record['line_code']}, Line Name: {record['line']}, Distance: {record['total_distance']:.2f}km")
 
+
+#Map of Tokyo Metro
+stations = driver.execute_query("MATCH (s:Station) RETURN s")
+data = []
+
+for record in stations.records:
+    node = record['s']
+    data.append({
+        'id': node['id'],
+        'name': node['name'],
+        'line': node['line'],
+        'line_name': node['line_name'],
+        'lat': node['lat'],
+        'long': node['long']
+    })
+
+stations_df = pd.DataFrame(data)
+print(stations_df)
+
+fig = px.scatter_mapbox(
+    stations_df,
+    lat="lat",
+    lon="long",
+    color="line_name",
+    hover_name="name",
+    hover_data={"id": True, "lat": False, "long": False},
+    size_max=60,
+    zoom=11,
+    height=800
+)
+
+fig.update_layout(
+    mapbox_style="open-street-map",  
+    mapbox_zoom=11,
+    mapbox_center={"lat": stations_df["lat"].mean(), "lon": stations_df["long"].mean()},
+    margin={"r":0, "t":0, "l":0, "b":0}
+)
+
+fig.show() 
