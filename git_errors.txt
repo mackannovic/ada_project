@@ -1,0 +1,109 @@
+PS C:\Users\HP\Documents\PGDip\ada_project\ada_project> git add.
+git: 'add.' is not a git command. See 'git --help'.
+
+The most similar command is
+        add
+PS C:\Users\HP\Documents\PGDip\ada_project\ada_project> git commit -m "work on extracting connections and linked types"
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   planner.py
+
+no changes added to commit (use "git add" and/or "git commit -a")
+PS C:\Users\HP\Documents\PGDip\ada_project\ada_project> git push
+Everything up-to-date
+PS C:\Users\HP\Documents\PGDip\ada_project\ada_project> git add.
+git: 'add.' is not a git command. See 'git --help'.
+
+The most similar command is
+        add
+PS C:\Users\HP\Documents\PGDip\ada_project\ada_project> git commit -m "pathfinding with steps and connection types"
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   planner.py
+
+no changes added to commit (use "git add" and/or "git commit -a")
+PS C:\Users\HP\Documents\PGDip\ada_project\ada_project> git push
+Everything up-to-date
+PS C:\Users\HP\Documents\PGDip\ada_project\ada_project> git add.
+git: 'add.' is not a git command. See 'git --help'.
+
+The most similar command is
+        add
+PS C:\Users\HP\Documents\PGDip\ada_project\ada_project> git commit -m "pathfinding algo complete"
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   planner.py
+
+no changes added to commit (use "git add" and/or "git commit -a")
+PS C:\Users\HP\Documents\PGDip\ada_project\ada_project> git push 
+Everything up-to-date
+PS C:\Users\HP\Documents\PGDip\ada_project\ada_project> git add.
+git: 'add.' is not a git command. See 'git --help'.
+
+The most similar command is
+        add
+PS C:\Users\HP\Documents\PGDip\ada_project\ada_project> git commit -m "finalised planner file"
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   planner.py
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        tokyo.png
+
+no changes added to commit (use "git add" and/or "git commit -a")
+PS C:\Users\HP\Documents\PGDip\ada_project\ada_project> git push
+Everything up-to-date
+PS C:\Users\HP\Documents\PGDip\ada_project\ada_project> git add.
+git: 'add.' is not a git command. See 'git --help'.
+
+The most similar command is
+        add
+PS C:\Users\HP\Documents\PGDip\ada_project\ada_project> git commit -m "Amended file to remove unnecessary prints"
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   planner.py
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        tokyo.png
+
+no changes added to commit (use "git add" and/or "git commit -a")
+PS C:\Users\HP\Documents\PGDip\ada_project\ada_project> git push
+Everything up-to-date
+PS C:\Users\HP\Documents\PGDip\ada_project\ada_project> git add .
+PS C:\Users\HP\Documents\PGDip\ada_project\ada_project> git commit -m "Added files and updated planner.py multiple attempts at git upload seemed to have failed in between"
+[main ba4dbff] Added files and updated planner.py multiple attempts at git upload seemed to have failed in between
+ 2 files changed, 97 insertions(+), 12 deletions(-)
+ create mode 100644 tokyo.png
+PS C:\Users\HP\Documents\PGDip\ada_project\ada_project> git push
+Enumerating objects: 6, done.
+Counting objects: 100% (6/6), done.
+Delta compression using up to 16 threads
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (4/4), 809.88 KiB | 18.41 MiB/s, done.
+Total 4 (delta 1), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To https://github.com/mackannovic/ada_project.git
+   b4cbe42..ba4dbff  main -> main
+PS C:\Users\HP\Documents\PGDip\ada_project\ada_project> 
