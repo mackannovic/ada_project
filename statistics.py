@@ -19,8 +19,44 @@ stations=driver.execute_query("MATCH (s:Station) RETURN count(s) AS station_coun
 print(f"There are {stations.records[0]['station_count']} stations within the Tokyo Metro System")
 lines = driver.execute_query("MATCH (s:Station) RETURN count(DISTINCT s.line) AS number_of_lines")
 print(f"There are {lines.records[0]['number_of_lines']} lines within the Tokyo Metro System")
+print("")
+print("")
 line_stations = driver.execute_query("""MATCH (s:Station) WITH s.line AS line, s.line_name AS line_name, 
                                      count(*) AS station_count RETURN line, line_name, station_count ORDER BY station_count DESC""")
 print("Count of Stations per Line")
 for record in line_stations.records:
     print(f"Line: {record['line']}, Line Name: {record['line_name']}, Station Count: {record['station_count']}")
+print("")
+connects=driver.execute_query("MATCH ()-[r:CONNECT]-() RETURN count(r) AS connects_count")
+print(f"There are {connects.records[0]['connects_count']} multi-directional station connections within the Tokyo Metro System")
+connects_stations = driver.execute_query("""MATCH (s:Station)-[r:CONNECT]->()
+WITH s.name AS station_name, count(r) AS outbound_connections
+RETURN station_name, outbound_connections
+ORDER BY outbound_connections DESC
+LIMIT 10""")
+print(f"The station with the most connections is {connects_stations.records[0]['station_name']} with {connects_stations.records[0]['outbound_connections']} outbound connections")
+print("")
+print("Top Ten Stations by number of outbound connections")
+for i, record in enumerate(connects_stations.records, start=1):
+    print(f"{i}. Station: {record['station_name']}, Outbound Connects: {record['outbound_connections']}")
+connect_type = driver.execute_query("MATCH (a)-[r:CONNECT]->(b) RETURN r.type AS relationship_type, count(*) AS type_count ORDER BY type_count DESC")
+print("")
+print(f"There are {len(connect_type.records)} types of connections")
+print("Connection Types Outbound Count")
+for record in connect_type.records:
+    print(f"Type: {record['relationship_type']}, Outbound Connects: {record['type_count']}")
+print("")
+avg_distance=driver.execute_query("""MATCH (a:Station)-[r:CONNECT]->(b:Station)
+WHERE r.distance IS NOT NULL
+RETURN avg(r.distance) AS average_distance""")
+print(f"The average distance for connections is {avg_distance.records[0]['average_distance']:.2f}km")
+print("")
+line_distance=driver.execute_query("""MATCH (a:Station)-[r:CONNECT]->(b:Station)
+WHERE r.line IS NOT NULL AND r.distance IS NOT NULL
+RETURN r.line_code AS line_code, r.line AS line, sum(r.distance) AS total_distance
+ORDER BY total_distance DESC""")
+print(f"The line with the longest track distance is the {line_distance.records[0]['line']} with {line_distance.records[0]['total_distance']:.2f}km of track")
+print("Lines by Distance")
+for record in line_distance.records:
+    print(f"Line: {record['line_code']}, Line Name: {record['line']}, Distance: {record['total_distance']:.2f}km")
+
