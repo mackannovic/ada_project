@@ -100,7 +100,7 @@ RETURN
     nodes(path) as path
 ORDER BY index""", start=args.start, end=args.end)
 
-print(f"Shortest Route Generated for {records[0]['sourceNodeName']} to {records[0]['targetNodeName']} - Total Distance: {records[0]['totalCost']} - Stops: {len(records[0]['nodeNames'])-1}")
+print(f"Shortest Route Generated for {records[0]['sourceNodeName']} to {records[0]['targetNodeName']} - Total Distance: {records[0]['totalCost']:.2f}km - Stops: {len(records[0]['nodeNames'])-1}")
 
 ids = [stop['id'] for stop in records[0]['path']]
 
@@ -123,3 +123,5 @@ for idx, (a, b) in enumerate(pairs, start=1):
         extra_info = f"Transfer to {record['r']['line']}"
 
     print(f"Step {idx}. {a}:{record['fromStation']} ➡ {b}:{record['toStation']} by {record['r']['type']} for {record['r']['distance']}km - {extra_info}")
+
+input("Press Enter to exit...")
